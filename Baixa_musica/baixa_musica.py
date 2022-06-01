@@ -8,8 +8,9 @@ janela = sg.Window('Música',icon = 'imagens/icone.ico').Layout(layout)
 
 def download_audio(video_url):
 	yt = YouTube(video_url)
-	audio = yt.streams.filter(only_audio=True)[0]
+	audio = yt.streams.get_highest_resolution()
 	audio.download()
+
 
 
 def titulo(video_url):
@@ -30,5 +31,5 @@ while True:
 
 		janela.close()
 		download_audio(video_url[0])
-		sg.popup(f'Nome: {titulo(video_url[0])}\n Duração: {duracao(video_url[0])} \n Download Feito', title='Música',icon = 'imagens/icone.ico')
 
+		sg.popup(f'Nome: {titulo(video_url[0])}\n Duração: {duracao(video_url[0])} \n Download Feito', title='Música',icon = 'imagens/icone.ico')
